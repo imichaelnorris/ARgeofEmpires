@@ -19,6 +19,7 @@ namespace TangoWorkshop
 		public bool placementMenu = true;
 		public float lastUnitPlaceTime = 0;
 		public bool placedTownCenter = false;
+		public int kills;
 
         private GameObject marker;
 
@@ -66,6 +67,7 @@ namespace TangoWorkshop
 					newShape.GetComponent<Rigidbody>().velocity = newShape.transform.forward * 3f;
 				}
 				*/
+				GUI.TextArea (new Rect (0, 0, 128f, 32f), "" + kills);
 
 				// only create the "place" button if we have a place to put it (i.e. the marker object is active)
 				if (marker.activeSelf) {

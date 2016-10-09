@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using TangoWorkshop;
+
 using System.Collections;
 
 public class Character : MonoBehaviour {
@@ -7,9 +10,11 @@ public class Character : MonoBehaviour {
 	public float losRadius = 100.0f;
 	public int hp = 100;
 	public int attackPower = 25;
-	public float speed = 0.1f;
+	public float speed = 100.0f;
 	public bool military = true;
 	public int team;
+
+	//public Slider healthSlider;
 	// Use this for initialization
 
 	/**
@@ -17,16 +22,23 @@ public class Character : MonoBehaviour {
 	 */
 	public int aggressiveness = 0;
 
+	float barDisplay = 0;
+	//Vector2 pos = new Vector2(20,40);
+	Vector2 size = new Vector2(60,20);
+	public Texture2D progressBarEmpty;// : Texture2D;
+	public Texture2D progressBarFull;// : Texture2D;
+
 	void Start () {
+		
 		this.tag = ""+team;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -100.0f/* || hp <= 0*/)
+		if (transform.position.y < -10.0f || hp <= 0)
 			Destroy (this);
 		
-		if (target == null) {
+		if (target == null || target.hp <= 0) {
 			int team = this.GetComponent<TeamObject> ().team;
 			//target = FindClosestEnemy (GameObject.FindGameObjectsWithTag ("" + (team + 1) % 2));
 			target = FindClosestEnemy(GameObject.FindObjectsOfType<Character>());
@@ -53,17 +65,22 @@ public class Character : MonoBehaviour {
 				this.transform.parent.transform.position = Vector3.MoveTowards (transform.position, positionTo, 
 					speed * Time.deltaTime);
 				//this.transform.LookAt(target.transform);
-				if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName ("Run_Spear"))
-					GetComponent<Animator>().Play ("Run_Spear");
+				if (!GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Run_Spear")) {
+					GetComponent<Animator> ().Play ("Run_Spear");
+					//GetComponent<Animator>().
+				}
 			} else {
-				if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName ("Atack_Spear"))
-					GetComponent<Animator>().Play ("Atack_Spear");
-				//Character targetCharacter = target.GetComponent<Character> ();
-				target.hp -= attackPower;
-				//targetCharacter.animation.Play ("GetDamage_Spear");
-				if (target.hp <= 0) {
+				if (!GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Atack_Spear")) {
+					GetComponent<Animator> ().Play ("Atack_Spear");
+					//Character targetCharacter = target.GetComponent<Character> ();
+					target.hp -= attackPower;
+
+					//targetCharacter.animation.Play ("GetDamage_Spear");
+					//if (target.hp <= 0) {
 					Destroy (target.transform.parent.gameObject);
 					target = null;
+					((GameManager)GameObject.Find ("GameManager").GetComponent<GameManager>()).kills += 1;
+					//}
 				}
 			}
 		}

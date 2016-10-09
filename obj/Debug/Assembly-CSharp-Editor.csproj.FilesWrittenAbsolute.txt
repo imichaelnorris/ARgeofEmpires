@@ -1,5 +1,7 @@
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEngine.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEditor.dll
+/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-UnityScript-firstpass.dll
+/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-UnityScript.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEngine.Networking.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEditor.Networking.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEngine.UI.dll
@@ -14,6 +16,8 @@
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEditor.OSXStandalone.Extensions.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
+/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
 /Users/michael/TangoScratch/Temp/bin/Debug/Mono.Cecil.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/Unity.SerializationLogic.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/Unity.DataContract.dll
@@ -23,13 +27,3 @@
 /Users/michael/TangoScratch/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/michael/TangoScratch/Temp/bin/Debug/Mono.Cecil.Mdb.dll
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp-Editor.dll.mdb
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp-Editor.dll
-/Users/michael/TangoScratch/obj/Debug/Assembly-CSharp-Editor.dll
-/Users/michael/TangoScratch/obj/Debug/Assembly-CSharp-Editor.dll.mdb
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-UnityScript-firstpass.dll
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-UnityScript.dll
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp.dll
-/Users/michael/TangoScratch/Temp/bin/Debug/Assembly-CSharp.dll.mdb
