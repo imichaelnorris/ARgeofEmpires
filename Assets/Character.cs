@@ -6,8 +6,8 @@ public class Character : MonoBehaviour {
 	public float attackRadius = 0.1f;
 	public float losRadius = 100.0f;
 	public int hp = 100;
-	public int attackPower = 15;
-	public float speed = 1.0f;
+	public int attackPower = 25;
+	public float speed = 0.1f;
 	public bool military = true;
 	public int team;
 	// Use this for initialization
@@ -23,7 +23,7 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -100.0f || hp <= 0)
+		if (transform.position.y < -100.0f/* || hp <= 0*/)
 			Destroy (this);
 		
 		if (target == null) {
@@ -48,7 +48,9 @@ public class Character : MonoBehaviour {
 		    Vector3.Distance (transform.position, target.transform.position) < losRadius) {
 			if (Vector3.Distance (transform.position, target.transform.position) > attackRadius) {
 				//GetComponent<Animator>().runtimeAnimatorController.
-				this.transform.parent.transform.position = Vector3.MoveTowards (transform.position, target.transform.position, 
+				Vector3 positionTo = target.transform.position;
+				positionTo = new Vector3 (positionTo.x, 0, positionTo.z);
+				this.transform.parent.transform.position = Vector3.MoveTowards (transform.position, positionTo, 
 					speed * Time.deltaTime);
 				//this.transform.LookAt(target.transform);
 				if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName ("Run_Spear"))
@@ -56,11 +58,13 @@ public class Character : MonoBehaviour {
 			} else {
 				if (!GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName ("Atack_Spear"))
 					GetComponent<Animator>().Play ("Atack_Spear");
-				Character targetCharacter = target.GetComponent<Character> ();
-				targetCharacter.hp -= attackPower;
+				//Character targetCharacter = target.GetComponent<Character> ();
+				target.hp -= attackPower;
 				//targetCharacter.animation.Play ("GetDamage_Spear");
-				if (targetCharacter.hp <= 0)
-					Destroy (target);
+				if (target.hp <= 0) {
+					Destroy (target.transform.parent.gameObject);
+					target = null;
+				}
 			}
 		}
 
