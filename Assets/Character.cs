@@ -6,7 +6,7 @@ public class Character : MonoBehaviour {
 	public float attackRadius = 0.1f;
 	public float losRadius = 100.0f;
 	public int hp = 100;
-	public int attackPower = 15.0f;
+	public int attackPower = 15;
 	public float speed = 1.0f;
 	public bool military = true;
 	public int team;
@@ -32,9 +32,9 @@ public class Character : MonoBehaviour {
 			target = FindClosestEnemy(GameObject.FindObjectsOfType<Character>());
 			//target = target.transform.parent.gameObject;
 			//this.transform.parent.gameObject.transform.LookAt (target.transform.position);
-			Vector3 transform = new Vector3(target.transform.position.x, 0, target.transform.position.z);
+			Vector3 transformLook = new Vector3(target.transform.position.x, 0, target.transform.position.z);
 			
-			this.transform.LookAt(target.transform);
+			this.transform.LookAt(transformLook);
 		}
 		if (target == null && !this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle_Spear")) {
 			//GetComponent<Animation>().Play ("Idle_Spear");
