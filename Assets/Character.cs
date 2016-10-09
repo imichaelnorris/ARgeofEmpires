@@ -79,7 +79,7 @@ public class Character : MonoBehaviour {
 					//if (target.hp <= 0) {
 					Destroy (target.transform.parent.gameObject);
 					target = null;
-					((GameManager)GameObject.Find ("GameManager").GetComponent<GameManager>()).kills += 1;
+					//((GameManager)GameObject.Find ("GameManager").GetComponent<GameManager>()).kills += 1;
 					//}
 				}
 			}
