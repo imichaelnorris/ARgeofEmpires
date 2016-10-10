@@ -15,14 +15,15 @@ public class BaseAnimController : MonoBehaviour
 		_anim = GetComponent <Animator> ();
 	}
 
-
+	/*
 	private void OnGUI ()
 	{
 		BaseButtons ();
-	}
+	}*/
 
 	protected virtual void BaseButtons ()
 	{
+		/*
 		if (GUI.Button (new Rect (10, 10, 100, 50), "Run")) {
 			_anim.SetTrigger (_runTr);
 		}
@@ -42,6 +43,7 @@ public class BaseAnimController : MonoBehaviour
 		if (GUI.Button (new Rect (Screen.width - 110, 10, 100, 50), "Idle")) {
 			_anim.SetTrigger ("Idle");
 		}
+		*/
 
 
 	}

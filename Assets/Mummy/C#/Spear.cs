@@ -11,9 +11,9 @@ public class Spear : BaseAnimController
 	{
 		base.BaseButtons ();
 
-		if (GUI.Button (new Rect (10, 260, 100, 50), "Threaten")) {
+		/*if (GUI.Button (new Rect (10, 260, 100, 50), "Threaten")) {
 			_anim.SetTrigger (_threaten);
-		}
+		}*/
 	}
 
 }

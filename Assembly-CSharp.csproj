@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ARgeofEmpires\Building.cs" />
      <Compile Include="Assets\Character.cs" />
      <Compile Include="Assets\CharacterAnimatorController.cs" />
      <Compile Include="Assets\EnemyPlacer.cs" />
@@ -147,6 +148,7 @@
      <Compile Include="Assets\TangoWorkshop\_Completed\Part_2\_Completed_TangoARScreen_README.cs" />
      <Compile Include="Assets\TangoWorkshop\_Completed\Part_3\_Completed_GameManager.cs" />
      <Compile Include="Assets\TeamObject.cs" />
+     <Compile Include="Assets\Tower.cs" />
      <None Include="Assets\TangoSDK\Examples\ExperimentalMeshOcclusion\Shaders\ZTestBlur.shader" />
      <None Include="Assets\TangoPrefabs\Shaders\TangoEnvironmentalLighting\EnvironmentalLightingStandard.shader" />
      <None Include="Assets\Toon_RTS_demo\models\Materials\LeShader.shader" />

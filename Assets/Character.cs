@@ -6,11 +6,11 @@ using System.Collections;
 
 public class Character : MonoBehaviour {
 	private Character target;
-	public float attackRadius = 0.1f;
-	public float losRadius = 100.0f;
+	public float attackRadius = 0.001f;
+	public float losRadius = 0.5f;
 	public int hp = 100;
-	public int attackPower = 25;
-	public float speed = 100.0f;
+	public int attackPower = 100;
+	public float speed = 0.01f;
 	public bool military = true;
 	public int team;
 
@@ -35,16 +35,19 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -10.0f || hp <= 0)
-			Destroy (this);
+		if (transform.position.y < -10.0f || hp <= 0) {
+			Destroy (gameObject);
+		}
 		
 		if (target == null || target.hp <= 0) {
-			int team = this.GetComponent<TeamObject> ().team;
+			//int team = this.GetComponent<TeamObject> ().team;
 			//target = FindClosestEnemy (GameObject.FindGameObjectsWithTag ("" + (team + 1) % 2));
 			target = FindClosestEnemy(GameObject.FindObjectsOfType<Character>());
 			//target = target.transform.parent.gameObject;
 			//this.transform.parent.gameObject.transform.LookAt (target.transform.position);
-			Vector3 transformLook = new Vector3(target.transform.position.x, 0, target.transform.position.z);
+			if (target == null)
+				return;
+			Vector3 transformLook = new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z);
 			
 			this.transform.LookAt(transformLook);
 		}
@@ -53,36 +56,41 @@ public class Character : MonoBehaviour {
 			GetComponent<Animator>().Play("Idle_Spear");
 			return;
 		}
-		// go towards enemy
-		// if inside RADIUS, then attack
-		// if target is null, then be idle 
-		if (aggressiveness == 0 ||
-		    Vector3.Distance (transform.position, target.transform.position) < losRadius) {
-			if (Vector3.Distance (transform.position, target.transform.position) > attackRadius) {
-				//GetComponent<Animator>().runtimeAnimatorController.
-				Vector3 positionTo = target.transform.position;
-				positionTo = new Vector3 (positionTo.x, 0, positionTo.z);
-				this.transform.parent.transform.position = Vector3.MoveTowards (transform.position, positionTo, 
-					speed * Time.deltaTime);
-				//this.transform.LookAt(target.transform);
-				if (!GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Run_Spear")) {
-					GetComponent<Animator> ().Play ("Run_Spear");
-					//GetComponent<Animator>().
-				}
-			} else {
-				if (!GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Atack_Spear")) {
-					GetComponent<Animator> ().Play ("Atack_Spear");
-					//Character targetCharacter = target.GetComponent<Character> ();
-					target.hp -= attackPower;
 
-					//targetCharacter.animation.Play ("GetDamage_Spear");
-					//if (target.hp <= 0) {
-					Destroy (target.transform.parent.gameObject);
-					target = null;
-					//((GameManager)GameObject.Find ("GameManager").GetComponent<GameManager>()).kills += 1;
-					//}
+		if (military) {
+			// go towards enemy
+			// if inside RADIUS, then attack
+			// if target is null, then be idle 
+			if (aggressiveness == 0 ||
+			    Vector3.Distance (transform.position, target.transform.position) < losRadius) {
+				if (Vector3.Distance (transform.position, target.transform.position) > attackRadius) {
+					//Debug.Log (Vector3.Distance (transform.position, target.transform.position));
+					//GetComponent<Animator>().runtimeAnimatorController.
+					Vector3 positionTo = target.transform.position;
+					positionTo = new Vector3 (positionTo.x, 0, positionTo.z);
+					gameObject.transform.position = Vector3.MoveTowards (gameObject.transform.position, positionTo, 
+						speed * Time.deltaTime);
+					//this.transform.LookAt(target.transform);
+					if (!GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Run_Spear")) {
+						GetComponent<Animator> ().Play ("Run_Spear");
+						//GetComponent<Animator>().
+					}
+				} else {
+					if (!GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("Atack_Spear")) {
+						GetComponent<Animator> ().Play ("Atack_Spear");
+						//Character targetCharacter = target.GetComponent<Character> ();
+						target.hp -= attackPower;
+
+						//targetCharacter.animation.Play ("GetDamage_Spear");
+						if (target.hp <= 0) {
+							Destroy (target.gameObject);
+							target = null;
+						}
+					}
 				}
 			}
+		} else {
+
 		}
 
 	}

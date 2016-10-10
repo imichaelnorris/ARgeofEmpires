@@ -12,7 +12,7 @@ public class EnemyPlacer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (/*(Time.time - initializeTime > 10.0f) &&*/ Random.value > .90) {
+		if (/*(Time.time - initializeTime > 10.0f) &&*/ Random.value > .98) {
 			debugPlaceRandomObject ();
 		}
 	}
@@ -36,12 +36,12 @@ public class EnemyPlacer : MonoBehaviour {
 
 	void placeObject(Vector3 position, GameObject prefab) {
 		GameObject obj = (GameObject)Instantiate (prefab, position, prefab.transform.rotation);
-		obj.transform.position.Scale (new Vector3 (1.5f, 1.5f, 1.5f));
+		obj.transform.localScale *= 1.5f;
 		Character character = (Character)obj.GetComponent<Character>();
 		character.team = 1;
-		obj.tag = character.team + "";
+		//obj.tag = character.team + "";
 		obj.GetComponent<TeamObject> ();
 		TeamObject to = obj.GetComponent<TeamObject> ();
-		to.team = 0;
+		to.team = 1;
 	}
 }
