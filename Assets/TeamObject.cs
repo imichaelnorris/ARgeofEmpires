@@ -11,7 +11,7 @@ public class TeamObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		this.tag = ""+team;
+		//this.tag = ""+team;
 	}
 	
 	// Update is called once per frame

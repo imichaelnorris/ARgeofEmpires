@@ -22,8 +22,8 @@ public class EnemyPlacer : MonoBehaviour {
 		float x = Random.value;
 		float y = Mathf.Sqrt (1 - x * x);
 		Vector3 height = new Vector3 (0.0f, 5.0f, 0.0f);
-		Vector3 pos = new Vector3 (x, 0, y);
-		placeRandomObject (height + 2*pos);
+		Vector3 pos = new Vector3 (x, 0, y) * Random.value * 2.0f;
+		placeRandomObject (height + pos);
 	}
 
 	void placeRandomObject(Vector3 position) {

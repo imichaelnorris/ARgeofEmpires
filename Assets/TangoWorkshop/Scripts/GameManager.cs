@@ -163,7 +163,7 @@ namespace TangoWorkshop
 			//prefabPlacementGUI (buildingPrefabs);
 			if (placementMenu) {
 				drawStartMenu (0);
-			} else if (buildingMenu && !placedTownCenter) {
+			} else if (buildingMenu /*&& !placedTownCenter*/) {
 				drawBuildingMenu (0);
 			} else if (characterMenu) {
 				if ( (Time.time - lastUnitPlaceTime) > 2.0f)
