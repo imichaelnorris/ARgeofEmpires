@@ -77,7 +77,9 @@ namespace TangoWorkshop
 						// marker.transform.forward is used as opposed to marker.transform.up because the
 						// marker is a quad primitive and Unity's quad primitives have to be rotated to lay flat
 						Vector3 position = marker.transform.position + marker.transform.forward * ((prefab.transform.localScale.y / 2f) - POS_OFFSET);
-
+						position.x = Mathf.Round (position.x * 50) / 50.0f;
+						position.y = Mathf.Round (position.y * 50) / 50.0f;
+						position.z = Mathf.Round (position.z * 50) / 50.0f;
 						// create the new shape at the position with a default rotation (Quaternion.identity)
 						GameObject obj = (GameObject)Instantiate (prefab, position, prefab.transform.rotation);
 						TeamObject to = obj.GetComponent<TeamObject> ();
@@ -95,7 +97,7 @@ namespace TangoWorkshop
 							placedTownCenter = true;
 					}
 				} else {
-					GUI.TextArea (new Rect (320f, height, 256f, 96f), "No Scan");
+					GUI.Label (new Rect (320f, height, 256f, 96f), "No Scan");
 				}
 
 				// move position up for the next row of buttons
